@@ -9,11 +9,6 @@ labels: [architecture-scan]
 
 principles:
 
-- id: deletion-test-for-suspected-shallow-module
-  rule: "When a module is suspected of being shallow — a wrapper, a pass-through, an abstraction with no clear payoff — imagine deleting it. If the complexity it held simply vanishes, it was a pass-through and should go. If the complexity reappears at every caller that used it, it was earning its keep."
-  condition: "When judging whether an existing or proposed module is worth keeping as a separate seam, distinct from inlining it into its caller(s)."
-  reason: "A module can look justified by its existence alone — it has a name, a file, a test — without that presence proving it does anything its callers couldn't do as easily inline. The deletion test forces the question onto what actually happens to the complexity, not whether the module currently exists, which is the only reliable way to tell a real abstraction from a decorative one."
-
 - id: interface-is-the-test-surface
   rule: "Test a module through its public interface, the same surface its real callers use — not by reaching past it into internals. If a test needs to reach past the interface to make an assertion, that's a signal the module's interface is the wrong shape, not a reason to test around it."
   condition: "When writing or reviewing a test for a module that already has, or is being designed with, a defined interface."
